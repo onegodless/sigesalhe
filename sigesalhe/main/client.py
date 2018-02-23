@@ -17,6 +17,7 @@ class Client(object):
     
     def __init__(self, dni='00000000X', name='John', lstName='Doe', tlf='000000000', address=''):
         
+        
         self.dni = dni
         self.name = name
         self.lstName = lstName
@@ -25,8 +26,20 @@ class Client(object):
         self.instRandom = Random()
         self.instFaker = Faker()
         
-    def __insertValues(self):
-        pass
+        self.validateValues()
+        
+        
+    def inputClient(self):
+        
+        
+        self.dni = raw_input('Inserta el DNI del cliente. 8 números más una letra sin espacios ni símbolos: ') #to-do: reject any DNI already in the DB.
+        self.name = raw_input('Inserta el Nombre del cliente. 20 caracteres alfabéticos como máximo: ')
+        self.lstName = raw_input('Inserta el Apellido del cliente. 20 caracteres alfabéticos como máximo: ')
+        self.tlf = raw_input('Inserta el Teléfono del cliente. 9 números: ')
+        self.address = raw_input('Inserta el Domicilio del cliente. 100 caracteres como máximo: ')
+        
+        validatedClient = self.validateValues()
+        return validatedClient
     
     
     def validateValues(self):
@@ -50,18 +63,23 @@ class Client(object):
                     lstReturnValues[0] = self.dni
                 else:
                     print 'El último caracter del campo DNI debe ser una letra.'
+                    return 'error'
             else:
                 print 'los 8 primeros caracteres del campo DNI deben ser números.'
+                return 'error'
         else:
-            print 'El campo DNI tiene 9 caracteres'       
+            print 'El campo DNI tiene 9 caracteres' 
+            return 'error'     
         #####name validation#####
         if len(self.name) < 21:
             if self.name.isalpha:
                 lstReturnValues[1] = self.name
             else:
                 print 'Has introducido valores no alfabéticos en el campo nombre.'
+                return'error'
         else:
             print 'Demasiados caracteres en el campo nombre.'
+            return 'error'
         
         #####last name validation######
         if len(self.lstName) < 21:
@@ -69,8 +87,10 @@ class Client(object):
                 lstReturnValues[2] = self.lstName
             else:
                 print 'Has introducido caracteres no alfabéticos en el campo apellido.'
+                return 'error'
         else:
             print 'El campo apellido debe tener 20 caracteres como máximo.'
+            return 'error'
         
         #####tlf validation####
         if len(self.tlf) == 9:
@@ -78,19 +98,23 @@ class Client(object):
                 lstReturnValues[3] = self.tlf
             else:
                 print 'El campo tlf sólo puede contener números.'
+                return'error'
         else:
             print 'El campo tlf debe tener 9 caracteres.'
+            return 'error'
             
         #####address validation#####
         if len(self.address) < 101:
             lstReturnValues[4] = self.address
         else:
             print 'El campo dirección debe tener 80 caracteres como máximo.'
+            return 'error'
             
         return lstReturnValues
     
     
     def generateClients(self):
+        
         
         fakeDNI = str(self.instRandom.randrange(45000000, 45999999))+self.instFaker.random_letter()
         fakeName =  str(self.instFaker.name_male()) 
@@ -103,6 +127,7 @@ class Client(object):
         self.lstName = fakelName
         self.tlf = fakeTlf
         self.address = fakeAdress
+        
         
         lstRandomClient = self.validateValues()
         return lstRandomClient

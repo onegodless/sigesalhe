@@ -20,7 +20,10 @@ if __name__ == '__main__':
     lstRandomClient = instClient.generateClients()
     instDataBase.insertClient(lstRandomClient)
     '''
-    instDataBase.findRow()
+    #instDataBase.findRow()
+    clientRow = instClient.inputClient()
+    instDataBase.insertClient(clientRow)
+    
     
     
     
