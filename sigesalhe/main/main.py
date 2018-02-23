@@ -3,7 +3,7 @@
 
 
 from client import Client
-
+from dataBase import DataBase
 
 '''
 Created on Feb 23, 2018
@@ -15,4 +15,8 @@ Created on Feb 23, 2018
 if __name__ == '__main__':
     
     instClient = Client()
-    instClient.valideteValues()
+    instDataBase = DataBase()
+    
+    lstRandomClient = instClient.generateClients()
+    instDataBase.insertClient(lstRandomClient)
+    

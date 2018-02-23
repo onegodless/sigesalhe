@@ -8,29 +8,28 @@ Created on Feb 23, 2018
 @author: Jesús
 '''
 
+from faker import Faker
+from random import Random
+
+
 class Client(object):
-    '''
-    classdocs
-    '''
-
-
+    
+    
     def __init__(self, dni='00000000X', name='John', lstName='Doe', tlf='000000000', address=''):
-        '''
-        Constructor
-        '''
         
         self.dni = dni
         self.name = name
         self.lstName = lstName
         self.tlf = tlf
         self.address = address
-        
+        self.instRandom = Random()
+        self.instFaker = Faker()
         
     def __insertValues(self):
         pass
     
     
-    def valideteValues(self):
+    def validateValues(self):
         '''
             Validates the format and form of the data of the client.
             
@@ -89,3 +88,23 @@ class Client(object):
             print 'El campo dirección debe tener 80 caracteres como máximo.'
             
         return lstReturnValues
+    
+    
+    def generateClients(self):
+        
+        fakeDNI = str(self.instRandom.randrange(45000000, 45999999))+self.instFaker.random_letter()
+        fakeName =  str(self.instFaker.name_male()) 
+        fakelName = str(self.instFaker.last_name())
+        fakeTlf = str(self.instRandom.randrange(100000000, 999999999))
+        fakeAdress = str(self.instFaker.street_address())
+        
+        self.dni = fakeDNI
+        self.name = fakeName
+        self.lstName = fakelName
+        self.tlf = fakeTlf
+        self.address = fakeAdress
+        
+        lstRandomClient = self.validateValues()
+        return lstRandomClient
+
+    
