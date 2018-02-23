@@ -14,9 +14,13 @@ Created on Feb 23, 2018
 
 if __name__ == '__main__':
     
-    instClient = Client()
     instDataBase = DataBase()
-    
+    instClient = Client()
+    '''
     lstRandomClient = instClient.generateClients()
     instDataBase.insertClient(lstRandomClient)
+    '''
+    instDataBase.findRow()
+    
+    
     

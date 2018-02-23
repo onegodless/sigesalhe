@@ -8,6 +8,7 @@ Created on Feb 23, 2018
 @author: Jesús
 '''
 
+
 class DataBase(object):
 
 
@@ -16,13 +17,23 @@ class DataBase(object):
     
     def insertClient(self,lstValidClient):
         
-        table = open('clientTable.txt', 'a+')
+        table = open('clientTable.txt', 'a')
         
-        table.write(lstValidClient[0] + 'NextCamp' + lstValidClient[1] + 'NextCamp' + lstValidClient[2] + 'NextCamp' + lstValidClient[3] + 'NextCamp' + lstValidClient[4] + ' \n')
+        table.write(lstValidClient[0] + ' NextCamp ' + lstValidClient[1] + ' NextCamp ' + lstValidClient[2] + ' NextCamp ' + lstValidClient[3] + ' NextCamp ' + lstValidClient[4] + ' \n')
         
-        table.seek(0)
-        firstLine = table.readline()
-        firstLineSplit = firstLine.split('NextCamp')
-        print firstLineSplit
+        table.close()  
         
-        table.close()        
+    def findRow(self):
+        
+        table = open('clientTable.txt', 'r')
+        
+        allLines = table.readlines()
+        print allLines
+        for x in allLines:
+            query = x.split(' ')
+            for y in query:
+                if y == 'Chad':
+                    print query[0]
+                    
+    def modifyRow(self):
+        pass
