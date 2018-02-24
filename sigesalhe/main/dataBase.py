@@ -24,24 +24,36 @@ class DataBase(object):
         table.close()  
         
         
-    def findRow(self):
+    def findRow(self, query):
         
         table = open('clientTable.txt', 'r')
         
+        linePos = 0
         allLines = table.readlines()
-        print allLines
         for x in allLines:
-            query = x.split(' ')
-            for y in query:
-                if y == 'Chad':
-                    print query[0]
-        
+            splitting = x.split(' NextCamp ')
+            for y in splitting:
+                if y == query:
+                    return linePos
+            linePos += 1
+                    
         table.close()
                     
                     
-    def modifyRow(self):
-        pass
+    def modifyRow(self, row):
+        table = open('clientTable.txt', 'w')
+        
+        table.close()
     
+    
+    def printRow(self,queryPos):
+        
+        table = open('clientTable.txt', 'r')
+        for x in range(queryPos + 1):
+            actualPos = table.next()
+        print actualPos
+        
+        table.close()
     
     def showClientTable(self):
         
