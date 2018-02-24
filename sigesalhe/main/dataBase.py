@@ -23,6 +23,7 @@ class DataBase(object):
         
         table.close()  
         
+        
     def findRow(self):
         
         table = open('clientTable.txt', 'r')
@@ -34,6 +35,20 @@ class DataBase(object):
             for y in query:
                 if y == 'Chad':
                     print query[0]
+        
+        table.close()
+                    
                     
     def modifyRow(self):
         pass
+    
+    
+    def showClientTable(self):
+        
+        table = open('clientTable.txt', 'r')
+        
+        getRows = table.readlines()
+        
+        table.close()
+        
+        return getRows

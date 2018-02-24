@@ -117,7 +117,7 @@ class Client(object):
         
         
         fakeDNI = str(self.instRandom.randrange(45000000, 45999999))+self.instFaker.random_letter()
-        fakeName =  str(self.instFaker.name_male()) 
+        fakeName =  str(self.instFaker.first_name()) 
         fakelName = str(self.instFaker.last_name())
         fakeTlf = str(self.instRandom.randrange(100000000, 999999999))
         fakeAdress = str(self.instFaker.street_address())
