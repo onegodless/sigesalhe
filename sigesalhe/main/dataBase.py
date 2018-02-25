@@ -11,12 +11,17 @@ Created on Feb 23, 2018
 
 class DataBase(object):
 
-
     def __init__(self):
         pass
     
     def insertClient(self,lstValidClient):
+        '''
+        Inserts a list of data of a client into the Client table of the data base.
         
+        Pre: Takes a list with the validated data of the client.
+        
+        Pos: It doesn't return anything.
+        '''
         table = open('clientTable.txt', 'a')
         
         table.write(lstValidClient[0] + ' NextCamp ' + lstValidClient[1] + ' NextCamp ' + lstValidClient[2] + ' NextCamp ' + lstValidClient[3] + ' NextCamp ' + lstValidClient[4] + ' \n')
@@ -25,7 +30,13 @@ class DataBase(object):
         
         
     def findRow(self, query):
+        '''
+        Seaerches for a match with the query that user gave, and returns the whole row.
         
+        Pre: Takes a string as a query.
+        
+        Pos: Returns the whole row as a string. 
+        '''
         table = open('clientTable.txt', 'r')
         
         linePos = 0
@@ -41,22 +52,37 @@ class DataBase(object):
                     
                     
     def modifyRow(self, row):
+        '''
+        to-do
+        '''
         table = open('clientTable.txt', 'w')
         
         table.close()
     
     
-    def printRow(self,queryPos):
+    def printRow(self,queryCicles):
+        '''
+        Prints a row of a table by counting the position of that row in the txt file.
         
+        Pre: Takes an integer that determines the number of cicles of the for.
+        
+        Pos: Returns a string containing the row.
+        '''
         table = open('clientTable.txt', 'r')
-        for x in range(queryPos + 1):
-            actualPos = table.next()
-        print actualPos
+        for x in range(queryCicles + 1):
+            row = table.next()
+        return row
         
         table.close()
     
     def showClientTable(self):
+        '''
+        Prints the whole client table.
         
+        Pre: Nothing.
+        
+        Pos: Returns the whole table as a list.
+        '''
         table = open('clientTable.txt', 'r')
         
         getRows = table.readlines()

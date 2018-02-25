@@ -14,15 +14,14 @@ from random import Random
 
 class Client(object):
     
-    
     def __init__(self, dni='00000000X', name='John', lstName='Doe', tlf='000000000', address=''):
-        
         
         self.dni = dni
         self.name = name
         self.lstName = lstName
         self.tlf = tlf
         self.address = address
+        
         self.instRandom = Random()
         self.instFaker = Faker()
         
@@ -30,8 +29,14 @@ class Client(object):
         
         
     def inputClient(self):
+        '''
+        Ask the user to introduce the data for a client.
         
+        Pre: It doesn't take anything.
         
+        Pos: assigns the data that the user introduce into the instance properties, calls
+        validateValues() to validate the data and then returns the list sended by validateValues().
+        '''
         self.dni = raw_input('Inserta el DNI del cliente. 8 números más una letra sin espacios ni símbolos: ') #to-do: reject any DNI already in the DB.
         self.name = raw_input('Inserta el Nombre del cliente. 20 caracteres alfabéticos como máximo: ')
         self.lstName = raw_input('Inserta el Apellido del cliente. 20 caracteres alfabéticos como máximo: ')
@@ -44,11 +49,11 @@ class Client(object):
     
     def validateValues(self):
         '''
-            Validates the format and form of the data of the client.
+            Validates client's data before it's inserted into the table.
             
-            Pre: takes the data of the client.
+            Pre: uses the properties of the class referencing the client.
             
-            Pro: returns the data of the client.
+            Pos: returns the validated data of the client.
         '''
         
         ######dni validation#####
@@ -114,8 +119,13 @@ class Client(object):
     
     
     def generateClients(self):
+        '''
+        Generates all the data for a client with random values.
         
+        Pre: It doesn't take anything.
         
+        Pos: Returns a list with all the random data for a fictional client.
+        '''
         fakeDNI = str(self.instRandom.randrange(45000000, 45999999))+self.instFaker.random_letter()
         fakeName =  str(self.instFaker.first_name()) 
         fakelName = str(self.instFaker.last_name())

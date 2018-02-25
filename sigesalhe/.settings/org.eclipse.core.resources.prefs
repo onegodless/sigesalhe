@@ -6,5 +6,6 @@ encoding//main/gui.py=latin1
 encoding//main/main.py=latin1
 encoding//test/functionalTest.py=latin1
 encoding//test/testClient.py=latin1
+encoding//test/testDataBase.py=latin1
 encoding//test/testGUI.py=latin1
 encoding//test/testModifyRow.py=latin1
