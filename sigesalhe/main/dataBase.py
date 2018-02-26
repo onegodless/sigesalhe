@@ -31,7 +31,7 @@ class DataBase(object):
         
     def findRow(self, query):
         '''
-        Seaerches for a match with the query that user gave, and returns the whole row.
+        Seaerches for a match with the query that user passed, and returns the position of the row.
         
         Pre: Takes a string as a query.
         
@@ -56,6 +56,8 @@ class DataBase(object):
         to-do
         '''
         table = open('clientTable.txt', 'w')
+        
+        pass
         
         table.close()
     
