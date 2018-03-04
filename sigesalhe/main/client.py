@@ -34,8 +34,8 @@ class Client(object):
         
         Pre: It doesn't take anything.
         
-        Pos: assigns the data that the user introduce into the instance properties, calls
-        validateValues() to validate the data and then returns the list sended by validateValues().
+        Pos: assigns the data that the user introduced into the instance properties, calls
+        validateValues() to validate the data and then returns the list sent by validateValues().
         '''
         self.dni = raw_input('Inserta el DNI del cliente. 8 números más una letra sin espacios ni símbolos: ') #to-do: reject any DNI already in the DB.
         self.name = raw_input('Inserta el Nombre del cliente. 20 caracteres alfabéticos como máximo: ')

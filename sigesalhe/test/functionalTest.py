@@ -38,4 +38,5 @@ if __name__ == '__main__':
         instGUI.printMenu(instGUI.endTableOptions)
         instGUI.captureInput(instGUI.endTableOptions)
         
+        #The user selects the option '1. Modificar una fila'. 
         
