@@ -5,7 +5,7 @@
 '''
 Created on Feb 23, 2018
 
-@author: Jesús
+@author: Jesús Molina
 '''
 
 
@@ -15,49 +15,30 @@ class DataBase(object):
         pass
     
     
-    def openTable(self, fileTable, mode):
+    def insertClient(self, fileTable, clientData):
         '''
-        Opens a file a returns it.
-        
-        Pre: takes the file and the mode we want to open the file wiht.
-        
-        Post: returns an IO object.
-        '''
-        fileOpen = open(fileTable, mode)
-        return fileOpen
-    
-    
-    def closeTable (self, fileTable):
-        '''
-        Closes a file.
-        '''
-        fileTable.close()
-        
-        
-    def insertClient(self,clientData):
-        '''
-        Inserts a list of data of a client into the Client table of the data base.
+        Inserts a list of strings into a file.
         
         Pre: Takes a list of strings representing the client data.
         
-        Pos: It doesn't return anything.
+        Pos: Inserts the elements of the list with the format of a table.
         '''
-        table = self.openTable('clientTable.txt', 'a')
+        table = open(fileTable, 'a')
         
         table.write(clientData[0] + ' NextCamp ' + clientData[1] + ' NextCamp ' + clientData[2] + ' NextCamp ' + clientData[3] + ' NextCamp ' + clientData[4] + ' \n')
         
-        self.closeTable(table)  
+        table.close()  
         
         
-    def findRow(self, query):
+    def findRow(self,fileTable,query):
         '''
-        Searches for a match with the query that user passed, and returns the position of the row.
+        Searches for a match with the query that user gives, and returns the position of the row.
         
         Pre: Takes a string as a query.
         
         Pos: Returns the whole row as a string. 
         '''
-        table = self.openTable('clientTable.txt', 'r')
+        table = open(fileTable,'r')
         
         linePos = 0
         allLines = table.readlines()
@@ -68,49 +49,53 @@ class DataBase(object):
                     return linePos
             linePos += 1
                     
-        self.closeTable(table)  
+        table.close()  
                     
                     
-    def modifyRow(self, row, fileTable):
+    def modifyRow(self,fileTable,intRow,listFile,modifiedRow):
         '''
-        to-do
-        '''
-        table = self.openTable('clientTable.txt', 'w')
+        Overwrites a file with the same content as before except for a modified row.
         
-        fileTable[row] = '45307733X NextCamp Antonio NextCamp Campillos NextCamp 652871494 NextCamp Mar Chica n1 p5 2C \n'
-        for x in fileTable:
+        Pre: Takes the position of the row to modify and a list containning the original content of the file.
+        
+        Pos: Overwrites the file.
+        '''
+        table = open(fileTable,'w')
+        
+        listFile[intRow] = modifiedRow
+        for x in listFile:
             table.write(x)
             
-        self.closeTable(table)  
+        table.close()  
     
     
-    def printRow(self,queryCicles):
+    def printRow(self,fileTable,queryCicles):
         '''
-        Prints a row of a table by counting the position of that row in the txt file.
+        Prints a row of a table.
         
-        Pre: Takes an integer that determines the number of cicles of the for.
+        Pre: Takes an integer that determines position of the row.
         
         Pos: Returns a string containing the row.
         '''
-        table = self.openTable('clientTable.txt', 'r')
-        for x in range(queryCicles + 1):
+        table = open(fileTable, 'r')
+        for row in range(queryCicles + 1):
             row = table.next()
         return row
         
-        self.closeTable(table)  
+        table.close()  
     
-    def showClientTable(self):
+    def showClientTable(self,fileTable):
         '''
         Prints the whole client table.
         
-        Pre: Nothing.
+        Pre: File to open.
         
-        Pos: Returns the whole table as a list.
+        Pos: Returns the whole table as a list of strings.
         '''
-        table = self.openTable('clientTable.txt', 'r')
+        table = open(fileTable,'r')
         
         getRows = table.readlines()
         
-        self.closeTable(table)  
+        table.close()  
         
         return getRows

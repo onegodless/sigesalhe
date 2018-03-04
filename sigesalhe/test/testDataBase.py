@@ -3,7 +3,7 @@
 '''
 Created on Feb 25, 2018
 
-@author: Jesús
+@author: Jesús Molina
 '''
 import unittest
 from main.dataBase import DataBase
@@ -28,26 +28,28 @@ class Test(unittest.TestCase):
  
  
     def testModifyRow(self):
-        theFile = self.instDataBase.showClientTable()
-        self.instDataBase.modifyRow(5, theFile)
+        listFile = self.instDataBase.showClientTable('clientTable.txt')
+        modifiedRow = '45325756A NextCamp Test NextCamp Joe NextCamp 541533660 NextCamp Faky street 1 \n'
+        self.instDataBase.modifyRow('clientTable.txt',5,listFile, modifiedRow)
             
             
     def testPrintRow(self): 
-        self.assertEqual(self.instDataBase.printRow(3),'45425258Z NextCamp William NextCamp Vasquez NextCamp 545533060 NextCamp 0685 Sanders Point \n')
+        self.assertEqual(self.instDataBase.printRow('clientTable.txt',3),'45425258Z NextCamp William NextCamp Vasquez NextCamp 545533060 NextCamp 0685 Sanders Point \n')
      
      
     def testFindRow(self):
-        self.assertEqual(self.instDataBase.findRow('William'), 3)
+        self.assertEqual(self.instDataBase.findRow('clientTable.txt','William'),3)
         
         
     def testInsertClient(self):
         lstClient = ['12345678A', 'Test', 'Guy', '123456789', 'Fake Street 1', '\n']
-        self.instDataBase.insertClient(lstClient)
+        self.instDataBase.insertClient('clientTable.txt',lstClient)
     
     
     def testShowClientTable(self):  
-        print self.instDataBase.showClientTable()
-    
+        listTable = self.instDataBase.showClientTable('clientTable.txt')
+        for x in listTable:
+            print x
             
             
 if __name__ == "__main__":

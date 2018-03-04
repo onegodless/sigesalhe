@@ -5,7 +5,7 @@
 '''
 Created on Feb 23, 2018
 
-@author: Jesús
+@author: Jesús Molina
 '''
 
 from faker import Faker
@@ -32,10 +32,10 @@ class Client(object):
         '''
         Ask the user to introduce the data for a client.
         
-        Pre: It doesn't take anything.
+        Pre: 
         
         Pos: assigns the data that the user introduced into the instance properties, calls
-        validateValues() to validate the data and then returns the list sent by validateValues().
+        validateValues() to validate the data and then returns the list.
         '''
         self.dni = raw_input('Inserta el DNI del cliente. 8 números más una letra sin espacios ni símbolos: ') #to-do: reject any DNI already in the DB.
         self.name = raw_input('Inserta el Nombre del cliente. 20 caracteres alfabéticos como máximo: ')
@@ -49,9 +49,9 @@ class Client(object):
     
     def validateValues(self):
         '''
-            Validates client's data before it's inserted into the table.
+            Validates the client's data before it's inserted into the table.
             
-            Pre: uses the properties of the class referencing the client.
+            Pre: uses the attributes of the class concerning the client's data.
             
             Pos: returns the validated data of the client.
         '''
@@ -122,9 +122,9 @@ class Client(object):
         '''
         Generates all the data for a client with random values.
         
-        Pre: It doesn't take anything.
+        Pre: Validates the generated data with the validateValues() method.
         
-        Pos: Returns a list with all the random data for a fictional client.
+        Pos: Returns a list of strings with all the random data for a fictional client.
         '''
         fakeDNI = str(self.instRandom.randrange(45000000, 45999999))+self.instFaker.random_letter()
         fakeName =  str(self.instFaker.first_name()) 
