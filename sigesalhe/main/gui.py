@@ -19,26 +19,42 @@ class GUI(object):
         '''
         Constructor
         '''
-        self.clear = lambda: os.system('cls') #lambda function to clear screen in Windows.
+        self.__clear = lambda: os.system('cls') #lambda function to clear screen in Windows.
         
-        self.mainMenu = ['1. Administrar Base de Datos. \n',
-                         '2. Alquileres.']
-        self.dbAdminMenu = ['1. Mostrar datos de los clientes.']
-        self.tableMenu = []
-        self.endTableOptions = ['1. Modificar una fila.',
+        self.__mainMenu = ['1. Administrar Base de Datos. \n',
+                           '2. Alquileres.']
+        self.__dbAdminMenu = ['1. Mostrar datos de los clientes.']
+        self.__tableMenu = []
+        self.__endTableOptions = ['1. Modificar una fila.',
                                 '2. Añadir una fila.',
                                 '3. Eliminar una fila.',
                                 '4. Salir de la tabla,' ]
-        
+    
+    
+    def getMainMenu(self):
+        return self.__mainMenu
+    
+    
+    def getDBAdminMenu(self):
+        return self.__dbAdminMenu
+    
+    
+    def getTableMenu(self):
+        return self.__tableMenu
+    
+    
+    def getEndTableOptions(self):
+        return self.__endTableOptions
+    
         
     def printMenu(self, menu):
         '''
-        Prints a menu.
+        Prints out a menu.
         
         Pre: Takes a list representing a menu.
         '''
-        for x in menu:
-            print x
+        for __x in menu:
+            print __x
     
     
     def captureInput(self, menu):
@@ -49,25 +65,25 @@ class GUI(object):
         
         Pos: Returns the selection as an integer.
         '''
-        selection = raw_input('¿Qué opción eliges: ')
-        if selection.isdigit() and selection < len(menu):
-            return int(selection)
+        __selection = raw_input('¿Qué opción eliges: ')
+        if __selection.isdigit() and __selection < len(menu):
+            return int(__selection)
         
         
     def printFrame(self,lstToPrint):
         '''
         to-do
         '''
-        for x in lstToPrint:
+        for __x in lstToPrint:
             print '\n'
-            row = x.split(' NextCamp ')
-            for y in row:
-                sys.stdout.write(' ' + y + ' ')
+            __row = __x.split(' NextCamp ')
+            for __y in __row:
+                sys.stdout.write(' ' + __y + ' ')
         print ''
          
     def clearScreen(self):
         '''
         Clears the terminal.
         '''
-        self.clear() #Windows
+        self.__clear() #Windows
         print(chr(27) + "[2J") #Linux
