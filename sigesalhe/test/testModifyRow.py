@@ -4,7 +4,7 @@
 '''
 Created on Feb 24, 2018
 
-@author: Jesús
+@author: Jesús Molina
 '''
 
 from main.dataBase import DataBase
