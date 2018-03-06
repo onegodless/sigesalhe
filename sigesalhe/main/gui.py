@@ -22,21 +22,29 @@ class GUI(object):
         self.__clear = lambda: os.system('cls') #lambda function to clear screen in Windows.
         
         self.__mainMenu = ['1. Administrar Base de Datos. \n',
-                           '2. Alquileres.']
-        self.__dbAdminMenu = ['1. Mostrar datos de los clientes.']
-        self.__tableMenu = []
+                           '2. Alquileres.',
+                            '3. Salir.']
+        self.__adminDBMenu = ['1. Tabla Clientes.',
+                               '2. Tabla Herramientas.',
+                               '3.Salir']
+        self.__adminClientTableMenu = ['1. Mostrar datos de los clientes.',
+                                        '2. Salir']
         self.__endTableOptions = ['1. Modificar una fila.',
                                 '2. Añadir una fila.',
                                 '3. Eliminar una fila.',
-                                '4. Salir de la tabla,' ]
+                                '4. Salir de la tabla,',
+                                '5. Salir' ]
     
     
     def getMainMenu(self):
         return self.__mainMenu
     
     
-    def getDBAdminMenu(self):
-        return self.__dbAdminMenu
+    def getAdminDB(self):
+        return self.__adminDBMenu
+    
+    def getAdminClientTableMenu(self):
+        return self.__adminClientTableMenu
     
     
     def getTableMenu(self):
@@ -65,10 +73,9 @@ class GUI(object):
         
         Pos: Returns the selection as an integer.
         '''
-        __selection = raw_input('¿Qué opción eliges: ')
-        if __selection.isdigit() and __selection < len(menu):
-            return int(__selection)
-        
+        selection = raw_input('¿Qué opción eliges: ')
+        if selection.isdigit() and int(selection) < len(menu):
+            return int(selection)
         
     def printFrame(self,lstToPrint):
         '''

@@ -28,7 +28,8 @@ class Test(unittest.TestCase):
         self.instGUI.clearScreen()
     
     def testcaptureInput(self):
-        pass
+        selection = self.instGUI.captureInput(self.instGUI.getMainMenu())
+        self.assertEqual(selection,1)
 
 if __name__ == "__main__":
     unittest.main()
