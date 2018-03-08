@@ -30,8 +30,8 @@ class Client(object):
         
     def __str__(self):
         
-        return 'El DNI del cliente es: %s.\nSu nombre: %s.\nSu apellido: %s.\nSu teléfono: %s.\n' \
-        'Su dirección: %s' % (self.__dni, self.__name, self.__lstName, self.__tlf, self.__address) 
+        return 'DNI: %s.\nNombre: %s.\nApellido: %s.\nTeléfono: %s.\n' \
+        'Dirección: %s' % (self.__dni, self.__name, self.__lstName, self.__tlf, self.__address) 
         
         
             
