@@ -27,6 +27,9 @@ class Test(unittest.TestCase):
     def testName(self):
         pass
     
+    def testSTR(self):
+        print self.instClient
+    
     def testValidateValues(self):
         self.assertListEqual(self.instClient.validateValues(), ['45307733X','Jesús','Molina','652814940','Mar Chica n1 p5 2C'])
 

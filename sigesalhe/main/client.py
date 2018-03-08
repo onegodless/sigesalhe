@@ -28,6 +28,13 @@ class Client(object):
         self.validateValues()
         
         
+    def __str__(self):
+        
+        return 'El DNI del cliente es: %s.\nSu nombre: %s.\nSu apellido: %s.\nSu teléfono: %s.\n' \
+        'Su dirección: %s' % (self.__dni, self.__name, self.__lstName, self.__tlf, self.__address) 
+        
+        
+            
     def inputClient(self):
         '''
         Ask the user to introduce the data for a client.
